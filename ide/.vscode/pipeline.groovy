@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    triggers { pollSCM('H */4 * * 1-5') }    
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/paynet1/jgsu-spring-petclinic.git'
+            }       
+        }
+        stage('Build') {
+            steps {
+                sh './mvnw clean package'
+            }
+            
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
+}
