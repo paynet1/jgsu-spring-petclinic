@@ -1,16 +1,23 @@
 {
   "jenkins-runner.jobs": {
     "ide": {
-      "runWith": "pipelines-7080",
+      "runWith": "pipeline-7080",
       "name": "ide",
       "isDefault": true
     }
   },
   "jenkins-runner.hostConfigs": {
+<<<<<<< HEAD
     "pipelines-7080": {
       "url": "http://jenkins:7080",
       "user": "paynet1",
       "password": "paynet1",
+=======
+    "pipeline-7080": {
+      "url": "http://localhost:7080",
+      "user": "admin",
+      "password": "admin",
+>>>>>>> 8949bb28d8ab40bb73af1a5259d7dbc5c99cdaa4
       "useCrumbIssuer": true
     }
   }
